@@ -21,16 +21,63 @@ ajax = (url, method, data) => {
     });
 }
 
+
 loadinfo.addEventListener("click", load = () => {
   maintitles();
-  showdata(0,3);
-  showdata(3, 6);
-  showdata(6, 10);
-  showphotos(0,3);
-  showphotos(3, 6);
-  showphotos(6, 10);
+  var promise = new Promise(function(resolve, reject) {
+   
+    var myGen = function* () {
+      yield load1();
+      yield load2();
+      yield load3();
+    };
 
-});//End of inputyear method
+    var gen = myGen();
+
+    console.log(gen.next());
+    console.log(gen.next());
+    console.log(gen.next());
+    
+    loadinfo.classList.add('hide');
+  });
+
+    promise.then(firstResult).then(secondResult).then(lastResult);
+
+    function firstResult(response) {
+      return console.log(gen.next().value);
+    }
+
+    function secondResult(response) {
+      return console.log(gen.next().value);
+    }
+
+    function lastResult(response) {
+      return console.log(gen.next().value);
+    }
+    
+});
+
+load1 = () => {
+
+    showdata(0, 3);
+    showphotos(0, 3);
+};
+
+load2 = () => {
+
+    showdata(3, 6);
+    showphotos(3, 6);
+  
+};
+
+load3 = () => {
+
+    showdata(6, 10);
+    showphotos(6, 10);
+
+};
+
+
 
 maintitles = () => {
   var container = document.getElementById('apidata');
