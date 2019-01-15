@@ -23,7 +23,13 @@ ajax = (url, method, data) => {
 
 loadinfo.addEventListener("click", load = () => {
   maintitles();
-  showdata();
+  showdata(0,3);
+  showdata(3, 6);
+  showdata(6, 10);
+  showphotos(0,3);
+  showphotos(3, 6);
+  showphotos(6, 10);
+
 });//End of inputyear method
 
 maintitles = () => {
@@ -45,13 +51,11 @@ maintitles = () => {
   container.appendChild(title);
 }
 
-showdata = () => {
+showdata = (start, end) => {
   ajax("https://jsonplaceholder.typicode.com/posts", "GET").then((result) => {
     let obj = JSON.parse(result);
     
-    for (let i = 0; i < obj.length; i++) {
-    console.log(obj[i].body);
-    
+    for (let i = start; i < end; i++) {
       var ul = document.createElement('ul');
       ul.className = 'api1-ul';
       var titleCell = document.createElement('div');
@@ -64,23 +68,31 @@ showdata = () => {
       postCell.innerHTML = obj[i].body;
       postCell.className = "postcell";
       li.appendChild(postCell);
-      photosCell.innerHTML = obj[i].id;
-      photosCell.className = "photoscell";
-      li.appendChild(photosCell);
-      // ul.appendChild(li);
+      ul.appendChild(li);
       var element = document.getElementsByClassName("mainposts")[0];
       element.appendChild(li);
-
-
-
-    //=============SAFE CODE===============
-    // var list = document.createElement("li");
-    // list.className = "names";
-    // var node = document.createTextNode(obj[i].body);
-    // list.appendChild(node);
-    // var element = document.getElementsByClassName("mainposts")[0];
-    // element.appendChild(list);
-  }      
+    } 
     
+  });//End of ajax
+}
+
+
+showphotos = (start, end) => {
+  ajax("https://jsonplaceholder.typicode.com/photos", "GET").then((result) => {
+    let imgobj = JSON.parse(result);
+
+    for (let i = start; i < end; i++) {
+      var ul = document.createElement('ul');
+      ul.className = 'api2-ul';
+      var photosCell = document.createElement('img');
+      var li = document.createElement('li');
+      photosCell.src = imgobj[i].thumbnailUrl;
+      photosCell.className = "photoscell";
+      li.appendChild(photosCell);
+      ul.appendChild(li);
+      var element = document.getElementsByClassName("photosposts")[0];
+      element.appendChild(li);
+    } 
+
   });//End of ajax
 }

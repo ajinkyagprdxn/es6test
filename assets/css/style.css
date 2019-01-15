@@ -203,9 +203,31 @@ h1 {
 }
 
 .titlecell,
-.postcell,
-.photoscell {
+.postcell {
+  width: 48%;
+  padding: 10px 1%;
+  margin-top: 10px;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 18px;
+  text-align: center;
+  vertical-align: top;
+}
+
+.mainposts, .photosposts { display: inline-block;}
+
+.mainposts {
+  width: 66%;
+}
+
+.photosposts {
   width: 33%;
+  vertical-align: top;
+}
+
+.photosposts li {
+  vertical-align: top;
+  width: 90%;
   padding: 10px 0;
   margin-top: 10px;
   display: inline-block;
