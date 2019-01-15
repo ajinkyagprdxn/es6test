@@ -159,7 +159,7 @@
  /* ======= Your styling goes below ======= */
 
 h1 {
-  padding: 20px 0;
+  padding: 10px 0;
   color: #f00;
   font-family: sans-serif;
   font-size: 28px;
@@ -185,4 +185,32 @@ h1 {
 .loadinfo-btn:hover {
   color: #f00;
   background-color: #fff;
+}
+
+.head-title,
+.head-post,
+.head-photos {
+  width: 33%;
+  padding: 10px 0;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #f00;
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.titlecell,
+.postcell,
+.photoscell {
+  width: 33%;
+  padding: 10px 0;
+  margin-top: 10px;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 18px;
+  text-align: center;
+  vertical-align: top;
 }
